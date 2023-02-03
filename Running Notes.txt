@@ -1,0 +1,2663 @@
+Date : 12.08.2022
+=================
+
+Steps to prepare First Application
+==================================
+Step 1: Install any version of Java Software.(Recommended JDK 1.8)
+Step 2: Create a folder in any drive with any name.
+
+Step 3: Open Notepad or Notepadd++ or Editplus and type the Java program.
+[Dont use any IDE's]
+
+Step 4: Save the Java program with any name if and only if
+the application doesn't contain any public class.
+[Recommended approach is to take the class name where we kept
+main method]
+
+Ex:
+class Test{
+	public static void main(String[] args){
+       System.out.println("Hello World!!");
+	}
+}
+
+Save it as Demo.java.
+
+Step 5: Compile the Java Code.
+A. Open The command prompt.
+   Open Search Box -> Type CMD --> Right Click Pin to Taksbar
+   
+   Change the default location to ur current working
+   directory where u saved ur java application.
+
+C:\Users\sarka>E:
+--------------
+default working directory
+
+E:\>cd eceworkspace
+
+E:\eceworkspace>javac Test.java
+
+E:\eceworkspace>
+
+Step 6: Run the application
+
+E:\eceworkspace>java Test
+Hello World!!
+
+Compile and Run of a java application having pacakage statement:
+----------------------------------------------------------------
+Compile :javac -d . Test.java
+
+Run     :java com.wipro.test.Test
+
+
+Test Case of Hello World Program
+=================================
+Tes Case              Compile Time error            Run Time error 
+========              =================             ==============
+1. Remove ;            error: ';' expected             NA
+
+2. Remove Ending "     unclosed string literal         NA
+
+3. Remove beginning "   unclosed string literal        NA
+
+4. system.out.println   error: package system does not exist    NA
+
+5. String[] args        No Error                          NA
+
+See Paint Document for remaing test case.
+
+
+In Java we haave two contexts.
+1. static context
+2. non-static context
+
+-> 'static' is a non-access modifier. 
+-> 'static' modoifier is applicable for variables, methods,bloks and 
+in import statements.
+
+Static method:
+-> The method which is declared with 'static' modifier is known as 
+'static' method.
+-> If we declare a method as static we can call the method from anywhere[either from static context or from non static context.]
+
+
+Q> Why main method is public ?
+
+Ans.The main intention to declare main() method as public is to make available main() method to JVM in order to access from anywhere.
+
+
+Note: In Java application, if we declare main() method without public then compiler will not give any error, because compiler will treat main() method as normal Java method but JVM will provide the following.
+
+JAVA8 Onwards  all versions:
+
+JAVA 8: Error: Main method not found in class Test, please define the main method as:
+public static void main(String[] args)
+or a JavaFX application class must extend javafx.application.Application
+
+Q> Why main method is static?
+
+The keyword static declares the method as that belong to the entire class not a part of any object of a class. Without existing object JVM has to call this method, that’s why it should be static.
+
+Date: 19.08.2022
+================
+Based on the value represented by a variable we have two different types:
+   1. primitive variable : It is used to represent primitive value. 
+   2. reference variable : It is used  to refer objects.
+                                                ========
+Based on position of declartion and behavior all variables are callssified into
+three types.
+    1. non-static(instance) variable
+    2. static variable
+    3. local variable
+
+static variable:
+================
+Q> When should we go for static variables?
+
+-> If the value of the variable doesn't change with respect to obejct to object 
+such type of variables are called static variable.
+Ex: cname is a static variabale with respect to a particular college.
+
+Q> For Static variables how many copies will be created?
+-> For static variables only one copy of that variable will be created irrespective of the number of objects.
+static variable will be considered as shared variable.
+
+Q> Where static varibale will be stored ?
+-> Static variable will be stored in Method area of JVM memory.
+
+Q> What is the default value for static variable?
+-> For sttaic variable default value will be provided by JVM based on their type.
+ 
+Q> Where static variables are decalred ?
+-> 'static' variable are declared inside the class directly but non inside any method .
+
+Q> When static variable is created ?
+->'static' variable are created at the time of class loading.
+Hence the lifee of static variable is as long as the lide of a class.
+
+Q>What is class loading? How class can be laoded ?
+Ans. Brininging class from hard disk to JVM memory of RAM is called class loading.
+
+Class Loader brings the .class file from hard disk to JVM memory of RAM.
+
+Approach #1: At the time of running the java applciation
+Ex: java Test
+
+Approach #2: 
+class Test{
+	 	/*static method*/
+		public static void main(String[] args){
+		
+				System.out.println(Student.cname);
+
+     }    
+}
+class Student{		
+      /*static varibale*/  
+		 static	String cname;
+}
+
+In the above example when we run the application by 
+writing java Test
+as a part of Test.class execution in the System.out.println(Student.cname)
+Student class also will be loaded.
+ 
+->'static' variables are also called as class level variables.
+
+-> 'static' variables are decalred with 'static' modifier. 
+
+Q> How to access staic variable ?
+
+-> We can access static variable in 3 different ways.
+
+App #1 By using class name.
+
+class Student{		
+      /*static varibale*/  
+		 static	String cname;
+}
+
+class Test{
+	 	/*static method*/
+		public static void main(String[] args){
+		     /*Accessing static variable by using class name*/
+				System.out.println(Student.cname);
+     }    
+}
+
+App #2 Within the same class we can drop the class name.
+
+class Test{
+		static int x;
+	 	/*static method*/
+		public static void main(String[] args){
+		     /*Accessing static variable without using class name*/
+				System.out.println(x);
+			
+			
+     }    
+}
+App #3: Will be discussed after learning new keyword.
+
+non-static:
+==========
+Q.When should i go for non-static varibale?
+
+1.If the value of the variable is varied from object ot object 
+such type of variables are called non-static variables or instance 
+variables.
+Ex: String sname,int roll;
+
+2.The no of copies that will be cretaed for non-static variable
+is equal to the number of objects.
+
+3. The non-static variables are stored in heap memory 
+of jvm memory as a part of the object.
+
+4. The default value for non-stattic variable is provided by
+JVM based on the type of the variable.
+
+5. The non-static variables are created at the time of object creation.
+Hence the life time of non-static variable is upto the life time of object
+
+6. The non-static variables are called as object level variables or instance variable.
+
+7. How to access non-static variable from static area ?
+
+-> non-static variable can't be access directly from static context.
+
+Ex:
+class Student{
+	/*non-static variable*/
+	String name;
+	int roll;
+	public static void main(String[] args){
+		System.out.println(name);
+		System.out.println(roll);
+
+	}
+}
+
+Test.java:6: error: non-static variable name cannot be referenced from a static context
+                System.out.println(name);
+                                   ^
+Test.java:7: error: non-static variable roll cannot be referenced from a static context
+                System.out.println(roll);
+                                   ^
+2 errors
+
+-> To access non-static variable from static context directly we need to create object first
+and then using reference variable we can access.
+
+class Student{
+	/*non-static variable*/
+	String name;
+	int roll;
+	public static void main(String[] args){
+
+		/*Approach #1 : Create Object(Nsmmed Object) */
+		Student student = new Student();		
+		System.out.println(student.name);
+		System.out.println(student.roll);
+
+	}
+}
+
+Q> How to create object? 
+
+Ans. There are multiple ways to create object.
+
+Approach #1:
+------------
+By using new keyword/ new operator.
+ 
+Q>What is the syntax of object creation ?
+
+Ans. Class_Name  reference_variable_name = new Class_Name();
+Ex:  Test  t  =  new   Test();
+
+Note: Class_Name() will be read as Constructor.
+
+Responsibility of new keyword:
+-------------------------------
+1. new keyword first creates the object.
+2. After that new keyword will return(giving) the reference value of the created object.
+
+local variable:
+---------------
+
+Q> What is called local variable ?
+
+Ans. For temporary requirement of the programmer we can declare a variable inside a method or a loop or block or constructor.Such variables are called as local variable or automatic variable or temporary variable or stack variable.
+ 
+Q> When should we go for local variable ?
+
+-> If we use any variable for temporary purpose that variabe is called local variable.
+
+-> For local variable before using initializing is compulsory.
+
+Ex#1:
+class Test{
+   public static void main(String[] args){
+       int i;
+       System.out.println("i:"+i);
+   }
+}
+Test.java:4: error: variable i might not have been initialized
+       System.out.println("i:"+i);
+                               ^
+1 error
+
+In the above  program before using as the local variable is not initialized hence the reason of
+Compilation error.
+
+
+Ex#2:
+class Test{
+   public static void main(String[] args){
+       int i;
+       System.out.println("Hello");
+   }
+}
+O.P: Hello
+
+In the above program as i is not used thats why even the local variable is not initialized there is no error.
+
+-> Local variables will be stored inside the stack area.
+
+-> Local variables will be created at the time of block execution in the block where it is declared and the variable will be destroyed once the block execution is over.
+
+class Test{
+   public static void main(String[] args){
+	    /*local variable to main method*/
+		int i=0;		
+		for(int j=0;j<5;j++){ /*local variable to for loop*/
+			i=i+j;
+		}
+		System.out.println(i+" : "+j);
+   }
+}
+Test.java:8: error: cannot find symbol
+                System.out.println(i+" : "+j);
+                                           ^
+  symbol:   variable j
+  location: class Test
+1 error
+
+-> It is not recommended to initialize local variable inside any logical block. Becasue for logical block execution will take place or not that guarantee can't be given.
+
+class Test{
+   /*static variable*/
+   static double area;
+
+   public static void main(String[] args){
+		double p,b,h; /*Line #1*/
+		if(area==0.0){
+			b=3;
+			h=4;
+			p=0.5;
+		}
+		area=p*b*h; /*Line#2*/
+		System.out.println(area);
+	 }
+}
+
+E:\tempworkspace>javac Test.java
+Test.java:12: error: variable p might not have been initialized
+                area=p*b*h; /*Line#2*/
+                     ^
+Test.java:12: error: variable b might not have been initialized
+                area=p*b*h; /*Line#2*/
+                       ^
+Test.java:12: error: variable h might not have been initialized
+                area=p*b*h; /*Line#2*/
+                         ^
+3 errors
+
+-> For local variable only modifier that is applicable is final.
+
+class Test{
+   public static void main(String[] args){
+			//public int x=0;
+			//private int x=0;
+			//protected int x=0;
+			//static int x=0;
+			final int x=0;
+			System.out.println(x);
+	}
+}
+
+final Modifier:
+---------------
+-> 'final' is a non-access modifier.
+-> 'final' is applicable at variable level, method level and class level.
+
+final variable:
+---------------
+-> For final variable reassignment can't be done.
+
+class Test{
+   public static void main(String[] args){
+			final int x=0;
+			System.out.println(x);
+			x=0+5;
+			System.out.println(x);
+			
+	}
+}
+
+E:\tempworkspace>javac Test.java
+Test.java:9: error: cannot assign a value to final variable x
+                        x=0+5;
+
+final method:
+-------------
+For final method overring is not possible.
+
+class P{
+	public void properry(){
+		System.out.println("Gold+Cash+Land");
+	}
+	public final void marry(){
+		System.out.println("Athma");
+	}
+}
+class C extends P{
+	public void marry(){
+
+		System.out.println("Priyanka");
+
+	}
+}
+E:\tempworkspace>javac Test.java
+Test.java:10: error: marry() in C cannot override marry() in P
+        public void marry(){
+                    ^
+  overridden method is final
+1 error
+
+final class:
+-------------
+final class can't be inherited.
+final class P{
+	public void properry(){
+		System.out.println("Gold+Cash+Land");
+	}
+	public  void marry(){
+		System.out.println("Athma");
+	}
+}
+class C extends P{
+	public void marry(){
+
+		System.out.println("Priyanka");
+
+	}
+}
+ E:\tempworkspace>javac Test.java
+Test.java:9: error: cannot inherit from final P
+class C extends P{
+                ^
+1 error
+
+ Q> What is constructor ? Why it is needed ?
+===========================================
+
+Constructor is a special method[Because the name of the constructor must be same as name of the class]that is called whenever an object is created by using new operator.
+It contains a block of statements that is used to initialize non-static variable of the object.
+
+Constructor is needed to initialize non-static variable of the class. 
+
+
+Default Constructor:
+===================
+The compiler provided constructor in the absence of 
+programer defined constructor is called Default Constructor.
+
+class Test{                              class Test{
+                      compiler                Test(){
+                      --------->                 super();
+}                                             }
+                                          }
+
+Q#How to prove Deault Constructor is provided by Compiler ?
+
+Ans. 
+class Test {
+
+}
+1. Save it as Test.java
+2. Compile as javac Test.java
+3. javap Test
+
+Compiled from "Test.java"
+class Test {
+  Test();
+}
+
+No-Param Constructor: 
+=======================
+Programmer defined constructor without parameters is called No-Argument/Non-Parameterized Constructor.
+
+class Test{
+	Test(){
+		System.out.println("This is a no-arg constructor");
+	}
+	public static void main(String[] args){
+       Test t=new Test();
+    }
+} 
+Parameterized Constructor: 
+==========================
+A Constructor which has parameters in it called as Parameterized 
+Constructor,which is used to assign different values for the different objects.
+
+class Student{
+   /*non-static variable*/
+   String name;
+   int roll;
+	
+   Student(String name, int roll){
+	   this.nam=name;
+	   this.roll=roll;
+   }
+   public static void main(String[] args){
+		Student s1=new Student("AAA",111);  // Ref + local
+		System.out.println(s1.name);
+       System.out.println(s1.roll);
+
+		Student s2=new Student("BBB",222);
+		System.out.println(s2.name);
+        System.out.println(s2.roll);
+
+    }
+} 
+
+Rule of Constructors:
+=====================
+-> Name of the constructor must be same as the class name.
+-> Constructor can't have any return type not even void.
+If we provide any return type for the constructor we will
+not get any compile time error,because compile will 
+treat it as a method.
+
+class Test{
+   void Test(){
+      System.out.println("Method but not Constructor");
+   }
+   public static void Test(String[] args){
+        Test t=new Test();
+        t.Test();
+   }
+}
+-> The only applicable modifiers for constructor is public,private, protected,<default>(pppd).
+If we try to use any other modifer we will get Compile time error.
+
+Q#1. Can the constructor be static ?
+
+Ans.No, the only applicable modifiers for constructor is public,private, protected,<default>(pppd).
+If we try to use any other modifer we will get Compile time error.
+
+Test Case #1:
+class Demo{
+	static Demo(){
+
+	}
+	public static void main(String[] args){
+		Demo d=new Demo();
+	}
+}
+
+E:\testworkspace>javac Test.java
+Test.java:2: error: modifier static not allowed here
+        static Demo(){
+               ^
+1 error
+
+
+Q#2.Can the costructor be final ?
+
+Ans.No, the only applicable modifiers for constructor is public,private, protected,<default>(pppd).
+If we try to use any other modifer we will get Compile time error.
+
+class Demo{
+	final Demo(){
+
+	}
+	public static void main(String[] args){
+		Demo d=new Demo();
+	}
+}
+
+E:\testworkspace>javac Test.java
+Test.java:2: error: modifier final not allowed here
+        final Demo(){
+              ^
+1 error
+
+Concept of this :
+================
+Q#1. What is "this" ?
+
+-> 'this' is "non-static", "final" reference variable used to refer current class object.
+
+Test Case#1 : To proof "this" is "non-static" variable.
+
+class Test{
+	/*non-static variable */
+	int x=10;
+	public static void main(String[] args){
+
+		Test t=new Test();
+		System.out.println(this.x);
+
+	}
+}
+
+E:\tempworkspace>javac Test.java
+Test.java:9: error: non-static variable this cannot be referenced from a static context
+                System.out.println(this.x);
+                                   ^
+1 error
+
+Test Case#2 : To proof "this" is "final" variable.
+
+class Test{
+	
+	/*non-static method*/
+	public void m1(){
+		Test t=new Test();
+		this=t;
+	}
+	public static void main(String[] args){
+		Test t=new Test();
+		t.m1();
+	}
+}
+
+E:\tempworkspace>javac Test.java
+Test.java:6: error: cannot assign a value to final variable this
+                this=t;
+                ^
+1 error
+
+Q#2. What are the different use cases of "this"?
+
+Ans.
+Case #1:"this" is used to refer curent object non-static variable.
+
+class Rectangle{
+	int l,b;
+	Rectangle(int l, int b){
+		this.l=l;
+		this.b=b;
+	}
+	int area(){
+		return l*b;
+	}
+}
+class Test{
+	public static void main(String[] args){
+		Rectangle r1=new Rectangle(10,20);
+		System.out.println(r1.area());
+	}
+}
+
+Case #2: "this" can be used to call/invoke current class methods(static and non-static).
+
+class Test{
+	/*non-static methods*/
+	public void show(){
+		System.out.println("Inside show() method");
+	}
+	
+	/*static methods*/
+	public static void display(){
+		System.out.println("Inside display() method");
+	}
+
+	/*non-static methods*/
+	public void m1(){
+		this.show();
+		System.out.println("Inside m1() method");
+		this.display();
+	}
+	
+	public static void main(String[] args){
+		Test t=new Test();
+		t.m1();
+	}
+}
+
+Conclusion:"this" can be used to call static methods but this can't be usued inside static area.
+
+Case #3: "this" can be used as an argument to a method call
+
+class Test{
+	/*non-static methods*/
+
+	public void m1(){
+		m2(this); //10,10.23,10.23f,'a'
+	}
+	public void m2(Test t){//int,double,float,char
+		System.out.println("m2() method executed");
+	}
+	public static void main(String[] args){
+		Test t=new Test();   // t->Ref + local 
+		t.m1();
+	}
+}
+
+Case #4: "this" can be used to return current class object reference
+
+class Test{
+	/*non-static methods*/
+
+	public Test m1(){
+		System.out.println("m1() method called");
+		return this;
+	}
+	public void m2(){
+		System.out.println("m2() method called");
+	}
+	public static void main(String[] args){
+		/*Test t=new Test();   
+		Test t1=t.m1();
+		t1.m2();*/
+
+        new Test().m1().m2();
+	}
+}
+
+Case #5: "this" can be used as an argument to a constructor call
+
+class Student{
+	Student(Test t){
+		System.out.println("Str:"+t.str);
+	}
+}
+class Test{
+	/*non-static variable*/
+	String str; //str=null;
+	Test(String str){  // str is local here
+		new Student(this);
+
+	}
+	public static void main(String[] args){
+		Test t=new Test("ECE");
+	}
+}
+
+Case #6: We can use this()[this constructor]to call current class constructor.
+
+class Test{
+	Test(){
+		this(10);
+		System.out.println("Test class no-arg constructor");
+	}
+	Test(int i){
+		System.out.println("Test class one-arg constructor");
+	}
+	public static void main(String[] args){
+		Test t=new Test();
+	}
+}
+
+Q> Inside a constructor can we have this() and super() constructor both?
+
+Ans. No,Inside a constructor if we dont provide anything by default it will be super() constructor.
+
+
+Q> Can we have recursive method call ?
+
+Ans. Yes, but if we dont handle recursive method call perfectly it will lead to 
+StackOverFlowError.
+
+Q>Can we have Recursive Constructor call?
+Ans. Nooo...Recursive Constructor call is a compilation issue.
+
+ 
+Q#3. If the class is public then what is the access modifer for the default constructor?
+Ans. public.
+
+Q#4. Can a public class have non-public constructor or vice versa.
+Ans. Yes,if the class is having no-arg or parameterzed constructor then we can have this option.
+
+Case #1:
+public class Test{
+	Test(){
+
+	}
+}
+
+Case #2:
+class Test{
+	public  Test(){
+
+	}
+}
+
+Both Case#1 and Case#2 will compile and run successfully.
+
+ 
+Constructor Overloading:
+-------------------------
+Inside a Java class if we are having more than one constructor which differs either in number of arguments,
+types of arguments or sequence or order of arguments is the concept of Constructor Overlaoding.
+
+Case #1: Differs in number of arguments
+
+class Rectangle{
+	int length,breadth;
+	Rectangle(int i){
+		length=i;
+		breadth=i;
+	}
+	Rectangle(int length,int breadth){
+		this.length=length;
+		this.breadth=breadth;
+	}
+	int area(){
+		return length*breadth;
+	}
+}
+class Test{
+	public static void main(String[] args){
+		
+		Rectangle r1=new Rectangle(5);
+		System.out.println("Area of the Rectangle is :"+r1.area());
+   
+        Rectangle r2=new Rectangle(7,8);
+		System.out.println("Area of the Rectangle is :"+r2.area());
+   
+	}
+}
+
+Case #2: Differs in types of arguments
+
+class Test{
+     int i;
+	 double d;
+	 Test(int i){
+		this.i=i;
+	 }
+	 Test(double d){
+		this.d=d;
+	 }
+}
+
+Case #3: Differs in order/sequence of arguments
+
+class Test{
+     int i;
+	 double d;
+	 Test(int i,double d){
+		this.i=i;
+		this.d=d;
+	 }
+	 Test(double d,int i){
+        this.i=i;
+		this.d=d;
+	 }
+
+}
+
+3 pillers of oops:
+-----------------
+1. Encapsualtion   : Class, Package --> Security
+2. Inheritance     : extends        --> Reusability
+3. Polymorphism    :                --> Flexibility
+
+Why Inhertince:
+===============
+Without Inheritance:
+====================
+class BsnlSim{
+
+      // 300 methods 
+}
+
+class AirtelSim{
+
+      //300 methods
+}
+
+class JioSim{
+
+      //300 methods 
+}
+
+900 methods ------>  90 hours 
+1. Code Redundancy i.e. duplicate code.
+2. Length of the code is incresing like anythng.
+3. Readability is getting down.
+===================================================
+Let us assume 250 methods are common in every class
+
+With Inheritance:
+==================
+class Sim{
+    //250 common methods
+}
+class BsnlSim extends Sim{
+
+   //50 Specific methods
+}
+class AirtelSim extends Sim{
+
+   //50 specific methods
+}
+class JioSim extends Sim{
+
+   //50 specif methods
+}
+
+400 methods ------> 40 hours 
+
+1. Code Redundancy is removed 
+2. Length of the code is reduced.
+3. Readablity is improved.
+
+Inheritance:
+------------
+-> It is one of the main cornerstone of OOPs.
+-> We will use "extends" to achieve Inheritance."extends" means increasing functionality.
+-> Inheriance provides "Reusability". 
+-> Inheritance is a mechanism in Java in which one class inherits the features of another class and can 
+add its own features.
+-> The class which does inheriting is called as child class/sub class/ derived class.
+-> The class from which we inherit is called parent class/super class/ Base class.
+
+-> Inheriatnce can be considered as "IS-A" realtionship.
+-> By using "extends"" keyword we achieve "IS-A" realtionship.
+
+Ex#1:
+class P{
+	/*non-static variable*/
+	int x;
+    /*static variable*/
+	static int y;
+	/*non-static method*/
+	public void m1(){
+		System.out.println("P class m1() method");
+	}
+	/*static method*/
+	public static void m2(){
+		System.out.println("P class m2() method");
+	}
+}
+class C extends P{
+		/*non-static variable*/
+	int x1;
+    /*static variable*/
+	static int y1;
+	/*non-static method*/
+	public void m3(){
+		System.out.println("C class m3() method");
+	}
+	/*static method*/
+	public static void m4(){
+		System.out.println("C class m4() method");
+	}
+}
+/*Driver class/Main class*/
+class Test{
+	public static void main(String[] args){
+		C c=new C();
+		c.m1();
+		c.m2();
+		c.m3();
+		c.m4();
+		System.out.println(c.x);
+		System.out.println(C.y);
+		System.out.println(c.x1);
+		System.out.println(C.y1);
+
+	}
+}
+
+Note: In Java there is  "Object" class which is considered parent class of all classes until it is having any explicit parent class.
+
+E:\tempworkspace>javap java.lang.Object
+Compiled from "Object.java"
+public class java.lang.Object {
+  public java.lang.Object();
+  public final native java.lang.Class<?> getClass();
+  public native int hashCode();
+  public boolean equals(java.lang.Object);
+  protected native java.lang.Object clone() throws java.lang.CloneNotSupportedException;
+  public java.lang.String toString();
+  public final native void notify();
+  public final native void notifyAll();
+  public final void wait() throws java.lang.InterruptedException;
+  public final native void wait(long) throws java.lang.InterruptedException;
+  public final void wait(long, int) throws java.lang.InterruptedException;
+  protected void finalize() throws java.lang.Throwable;
+}
+
+Ex#2:
+
+class P{
+	public void m1(){
+		System.out.println("P class m1() method");
+	}
+}
+class C extends P{
+	public void m2(){
+		System.out.println("C class m2() method");
+	}
+}
+/*Driver class/Main class*/
+class Test{
+	public static void main(String[] args){
+	
+		/*Case #1*/
+		P p=new P();        /*Parent Reference Parent Object*/
+		p.m1();
+		//p.m2();
+
+		/*Case #2*/
+		C c=new C();        /*Child Reference Child object*/
+		c.m1();
+		c.m2();
+		
+		/*Case #3*/
+		P p1=new C();       /*Parent reference Child object*/
+		p1.m1();
+	//  p1.m2();
+
+		/*Case 4*/         /*Child reference Parent Object*
+	//	C C1=new P();
+
+	}
+}
+
+Con #1: Child class method by default not avialbale to the parent class. Hence by using PArent class reference 
+we can call only parent class specific methods.
+
+Con #2: PArent class method by default available to the child class and hence using child reference we can call both parent specific and child specific methods.
+
+Con#3: Parent class reference can be used to hold child class object.But by using that reference we can call only parent specific methods but not the child specific methods.
+
+Con#4: Child class reference variable can't be used to hold parent class object.
+
+Loose Coupling:
+---------------
+There are  3 ways to achieve Loose Coupling.
+
+1. Parent reference(Super class Reference) Child object(Sub-class object).
+ P p1 =new C(); // Where P is parent class and C is child class.
+
+2. Abstract class reference variable can be used to hold child class object.
+
+3. Interface reference variable can be used to hold  implementtaion class object.
+
+
+Method Overriding:
+------------------
+-> Parent class method by default available to the child class.
+-> If Child class is not happy with Parent class method implementation in child class we can redefine that method.
+-> This phenomenon is known as Method Overriding.
+-> The method who does overriding is called Overridng method and the method who get overridden is called
+Overridden method.
+
+class P{
+	public void property(){
+		System.out.println("Gold+Land+Cash");
+	}
+	/*Overriden Method*/
+	public void marry(){
+		System.out.println("Athma");
+	}
+}
+class C extends P{
+	/*Overriding Method*/
+	public void marry(){
+		System.out.println("Priyanka");
+	}
+}
+class Test{
+	public static void main(String[] args){
+		
+		/*Case #1/
+		P p=new P();
+		p.marry();
+
+       /*Case #2*/
+		C c=new C();
+		c.marry();
+
+       /*Case #3*/
+		P p1=new C();
+		p1.marry();
+	}
+}
+Compiler : Compilr will check the type of p,as p is of P type,i the P class  as marry method is present,
+hence no compile time error.
+
+JVM   : JVM will chek the type of object.
+If it is parent object, any how parent class contains marry() method and hence Parent class marry() method will
+execute.
+
+If it is child object,it will check in the child class marry() ,method is overridden or not.
+
+If it is not overrident parent class marry() method will be available to the child class and hence
+Parent class marry() method will be executd.
+
+If it is overriden then child class marry method will execute.
+
+In Method Overriding Method  Resolution(Which method to call)is always taken care by JVM based on 
+runtime object.
+This is known as runtime polymorphism or dynamic polymorphism or late binding(Which method to call)
+or it is called dynamic method dispatch(Which method to call).
+
+
+Method Hiding:
+--------------
+In Method Hiding  method  resolution(Which method to call)is always taken care by Compiler  based on reference variable.
+This is known as compile polymorphism or static polymorphism or early binding(Which method to call).
+
+class P{
+	public static  void m1(){
+		System.out.println("P class m1() method");
+	}
+}
+class C extends P{
+	public static void m1(){
+		System.out.println("C class m1() method");
+	}
+}
+class Test{
+	public static void main(String[] args){
+		
+		/*Case #1*/
+		P p=new P();
+		p.m1();        // Parent class
+
+       /*Case #2*/
+		C c=new C();
+		c.m1();       // Child class
+
+       /*Case #3*/
+		P p1=new C();
+		p1.m1();     //Child class 
+	}
+}
+
+O.P:
+----
+P class m1() method
+C class m1() method
+P class m1() method
+
+Method Signature:
+-----------------
+-> Method Signature includes method name and argumet types.
+-> Method Signature is used by Compiler.
+
+public static int m1(int x, float y){
+
+}
+Method Signtaure:  m1(int,float)
+
+Q#1. Prove that Compiler uses Method Signature.
+===============================================
+class Test{
+	public static void m1(int x, float y){}
+    public static void m1(int x, float y){}
+}
+Test.java:3: error: method m1(int,float) is already defined in class Test
+                           -------------
+    public static void m1(int x, float y){}
+                       ^
+1 error
+
+Q#2. Can we write more than one methods with same signature inside the same class?
+===================================================================================
+Ans. No, inside a class more than one method with same signature is not possible.
+It will lead to Compile time error.
+
+class Test{
+	public static void m1(int x, float y){}
+    public static void m1(int x, float y){}
+}
+Test.java:3: error: method m1(int,float) is already defined in class Test
+                           -------------
+    public static void m1(int x, float y){}
+                       ^
+Rules of Method Overriding:
+---------------------------
+1. In method overriding method signature(method name  and argument type) must be same.
+
+class P{
+	public void m1(){   //m1()
+      System.out.println("P class m1() method");
+	}
+}
+class C extends P{
+	public void m1(){   //m1()
+      System.out.println("C class m1() method");
+	}
+}
+2. Upto Java 1.4 Version, In method overriding methods must have same return type. 
+From one 1.5 Version onwards we can have different return types are allowed but Parent class method return type and child class method must return type must have Parent-to-Child 
+relationship.This phenomenon is known as "Covariant return type".
+
+class P{
+	public Object m1(){
+		return null;
+	}
+}
+class C extends P{
+      public  String m1(){
+			return null;
+	   }
+}
+class Test {
+	public static void main(String[] args){
+		
+     
+	}
+}
+
+Parent class method return type  : Object 
+Child class method return   type : Object|String|StringBuffer........
+
+Parent class method return type  : Number 
+Child class method return   type : Integer|Float|Character.....
+
+Parent class method return type  : double
+Child class method return   type : float
+It will not work because double and float are not realted as Parent-Child.
+
+Parent class method return type  : String 
+Child class method return   type : Object
+It will not work because String and Object are not realted as Parent-Child rather they are realted as Child-Parent.
+
+3. For private method overriding is not possible. But if we want we can declarethe exact same private method in the child class, it is possible but it is not overriding.
+
+class P{
+	private void m1(){
+		System.out.println("P class m1() method");
+	}
+}
+class C extends P{
+    private void m1(){
+			System.out.println("C class m1() method");
+	}
+}
+class Test {
+	public static void main(String[] args){
+		
+	}
+}
+The above code will compile.
+But if we try to create object and try to call m1() method of either class we will get compile time error.
+
+4. Access Modifier and Method Overriding:
+
+While overriding scope of Access Modifier can't be reduced.
+
+Parent Class: public
+Child Class : public 
+
+Parent Class: protected
+Child Class : protected | public
+
+Parent Class: <default>
+Child Class : <default>|protected|public
+
+Parent Class: private
+Child Class : <default> private protected public
+
+
+5.Final methods can't be override.
+class P{
+	public void properry(){
+		System.out.println("Gold+Cash+Land");
+	}
+	public final void marry(){
+		System.out.println("Athma");
+	}
+}
+class C extends P{
+	public void marry(){
+
+		System.out.println("Priyanka");
+
+	}
+}
+
+E:\tempworkspace>javac Test.java
+Test.java:10: error: marry() in C cannot override marry() in P
+        public void marry(){
+                    ^
+  overridden method is final
+1 error
+
+6. For static methods method overriding is not possible.It is called as Method Hiding.
+
+class P{
+	public static  void m1(){
+		System.out.println("P class m1() method");
+	}
+}
+class C extends P{
+	public static void m1(){
+		System.out.println("C class m1() method");
+	}
+}
+class Test{
+	public static void main(String[] args){
+		
+		/*Case #1*/
+		P p=new P();
+		p.m1();        // Parent class
+
+       /*Case #2*/
+		C c=new C();
+		c.m1();       // Child class
+
+       /*Case #3*/
+		P p1=new C();
+		p1.m1();     //Child class 
+	}
+}
+
+O.P:
+----
+P class m1() method
+C class m1() method
+P class m1() method
+
+
+Q#1 .Can we override a non-static method as static ?
+====================================================
+Ans. Overridng  non-static method as static is not possible.
+
+class P{
+	/*non-static method*/
+	public void m1(){   //m1()
+      System.out.println("P class m1() method");
+	}
+}
+class C extends P{
+	/*static method */
+	public static void m1(){   //m1()
+      System.out.println("C class m1() method");
+	}
+}
+
+Test.java:9: error: m1() in C cannot override m1() in P
+        public static void m1(){   //m1()
+                           ^
+  overriding method is static
+1 error
+
+Q#2. Can we override a static method as non-static ?
+=====================================================
+Ans. Overridng  non-static method as static is not possible.
+
+class P{
+	/*static method*/
+	public static void m1(){   //m1()
+      System.out.println("P class m1() method");
+	}
+}
+class C extends P{
+	/*non-static method */
+	public void m1(){   //m1()
+      System.out.println("C class m1() method");
+	}
+}
+E:\tempworkspace>javac Test.java
+Test.java:9: error: m1() in C cannot override m1() in P
+        public void m1(){   //m1()
+                    ^
+  overridden method is static
+1 error
+
+#Q. How to prevent method Overriding?
+=====================================
+Ans. 
+Approach #1: By making the method as static we can prevent method overriding.
+
+class P{
+	public static  void m1(){
+		System.out.println("P class m1() method");
+	}
+}
+class C extends P{
+	public static void m1(){
+		System.out.println("C class m1() method");
+	}
+}
+class Test{
+	public static void main(String[] args){
+		
+		/*Case #1*/
+		P p=new P();
+		p.m1();        // Parent class
+
+       /*Case #2*/
+		C c=new C();
+		c.m1();       // Child class
+
+       /*Case #3*/
+		P p1=new C();
+		p1.m1();     //Child class 
+	}
+}
+
+O.P:
+----
+P class m1() method
+C class m1() method
+P class m1() method
+
+Approach #2:Private method can't be override. But if we want we can declare
+exactly same private method of Parent class, it is possible but it is not overridng.
+
+class P{
+	private void m1(){
+		System.out.println("P class m1() method");
+	}
+}
+class C extends P{
+    private void m1(){
+			System.out.println("C class m1() method");
+	}
+}
+class Test {
+	public static void main(String[] args){
+		
+	}
+}
+
+Approach #: We can prevent methdo overriding by making the Parent class method as final.
+
+class P{
+	public void properry(){
+		System.out.println("Gold+Cash+Land");
+	}
+	public final void marry(){
+		System.out.println("Athma");
+	}
+}
+class C extends P{
+	public void marry(){
+
+		System.out.println("Priyanka");
+
+	}
+}
+E:\tempworkspace>javac Test.java
+Test.java:10: error: marry() in C cannot override marry() in P
+        public void marry(){
+                    ^
+  overridden method is final
+1 error
+
+8. We can't override Constructor becasue constructor can't be inherited as name of the class and name of the constructor must be same.
+ 
+9.Exception Handling and Overring will be discussed later.
+
+10. 
+
+Variable Hiding:
+================
+In Variable Hiding Variable resolution  is taken care by Compiler based on reference variable.
+This concept is known as Variable Hiding.
+
+class P{
+	int x=111;
+}
+class C extends P{
+	int x=222;
+}
+class Test{
+	public static void main(String[] args){
+		P p =new P();
+		System.out.println(p.x);
+
+		C c=new C();
+		System.out.println(c.x);
+
+		P p1=new C();
+		System.out.println(p1.x);
+	}
+}
+O.P:
+111
+222
+111 
+
+Polymorphism:
+-------------
+-> Def: Polymorphism in Java is a mechanism by which  we can perfomr single action by
+using different ways,i.e. one name but multiple form is the concept of Polymorphism.
+-> Polymorphism isderived from two Greek words,"poly" and "morphs".
+-> Poly means many, morph means form.
+-> There are two types of Polymorphism.
+
+   1. Compile Time  Polymorphism
+      1. Method Overloading    [Will be discuused]
+      2. Method Hiding 
+      3. Variable Hiding 
+
+   2. Run time Polymorphism
+      1. Method Overriding
+
+  3. Super class reference variable can be used to hold sub class object.
+
+1. Compile Time  Polymorphism
+==============================
+1. Method Overloading    
+---------------------
+class Animal{}
+class Monkey extends Animal{}
+class Test{	
+
+	void m1(Animal a){
+		System.out.println("Animal Version");
+	}
+	void m1(Monkey m){
+		System.out.println("Monkey Version");
+	}
+
+	public static void main(String[] args){
+	    Test t=new Test();
+		
+		Animal a=new Animal();
+		t.m1(a);
+
+		Monkey m=new Monkey();
+		t.m1(m);
+		
+		Animal a1=new Monkey();
+		t.m1(a1);
+	}
+}
+In Overloading method resolution is taken care by Compiler based on reference variable.
+This is known as Compile time Polymorphism or static Polymorphism or Early biniding.
+
+2. Method Hiding 
+----------------
+class P{
+	public static  void m1(){
+		System.out.println("P class m1() method");
+	}
+}
+class C extends P{
+	public static void m1(){
+		System.out.println("C class m1() method");
+	}
+}
+class Test{
+	public static void main(String[] args){
+		
+		/*Case #1*/
+		P p=new P();
+		p.m1();        // Parent class
+
+       /*Case #2*/
+		C c=new C();
+		c.m1();       // Child class
+
+       /*Case #3*/
+		P p1=new C();
+		p1.m1();     //Child class 
+	}
+}
+
+O.P:
+----
+P class m1() method
+C class m1() method
+P class m1() method
+
+3. Variable Hiding 
+-------------------
+
+class P{
+	int x=111;
+}
+class C extends P{
+	int x=222;
+}
+class Test{
+	public static void main(String[] args){
+		P p =new P();
+		System.out.println(p.x);
+
+		C c=new C();
+		System.out.println(c.x);
+
+		P p1=new C();
+		System.out.println(p1.x);
+	}
+}
+O.P:
+111
+222
+111 
+
+2. Run time Polymorphism
+========================
+1. Method Overriding
+
+class P{
+	public void property(){
+		System.out.println("Gold+Land+Cash");
+	}
+	/*Overriden Method*/
+	public void marry(){
+		System.out.println("Athma");
+	}
+}
+class C extends P{
+	/*Overriding Method*/
+	public void marry(){
+		System.out.println("Priyanka");
+	}
+}
+class Test{
+	public static void main(String[] args){
+		
+		/*Case #1/
+		P p=new P();
+		p.marry();
+
+       /*Case #2*/
+		C c=new C();
+		c.marry();
+
+       /*Case #3*/
+		P p1=new C();
+		p1.marry();
+	}
+}
+
+O.P: Athma
+     Priyanka
+	  Priyanka
+
+Real life Example of Polymorphism: 
+==================================
+poly -> many
+morph -> form
+
+The boys starts the love relationship with the word "friendship".
+The girls ends the love relationship with the word "friendship". 
+
+
+Q#How to prove the first line inside constructor is super().
+============================================================
+Ans.
+class P{
+	P(){
+		System.out.println("P class Constructor");
+	}
+}
+class C extends P{
+	C(){
+		//super();
+		System.out.println("C class Constructor");
+	}
+}
+class Test{	
+	public static void main(String[] args){
+		C c=new C();
+	}
+}
+
+O.P:
+C class Constructor
+P class Constructor
+
+******
+Diff between Method Overloading and Overriding.
+===============================================
+
+1. Methd Name : [Similar]
+Overloading:  In Overloading method anme must be same.
+Overriding :   In Overriding method anme must be same.
+
+2. Argument types:
+Overloading:  In Overloading argument types must be different
+Overriding :   In Overriding argument type must be same.
+
+3.  Method Signature:
+Overloading:   In Overloading method signature must be different
+Overriding :   In Overriding  method signature must be same.
+
+4. Return type:
+Overloading:  In Overloading return type does not have any role to play.
+Overriding :  Upto 1-4 Version return type mus t be same, but from 1.5 Version onwards covariant returntype is allowed.
+
+5. private,static, final methods:
+Overloading : We can overload private, static and final methods.
+Overriding  : We can't override private, static and final methods.
+
+6.Access Modifier :
+
+Overlaoding: In Overlaoding Access Modifier doesn't have any role to play.
+Overriding : In Overriding scope of Access modifier can't be reduced.
+ 
+7. Method Invocation Resolution:
+Overloading : In Overlaoding Method resolution is taken care by compiler.
+Overriding  : In Overriding Method resolution is taken care by JVM.
+
+8. It is also knwn as:
+
+Overloading: Compile time polymorphism or static polymorphism
+or early binding.
+Overriding: Runt time polymorphsim or dyanmic polymorphism 
+or late binding or dynamic method dispatch.
+
+9. Constructors:
+
+Overloading: We can overload constructors.
+Overriding : Constructor overriding is not possible.
+
+10. Class Requirement:
+
+Overloding : To achieve overloading single class is enough.
+Overriding : To achieve overriding  minimum two classes are needed.
+
+11. throws clause:
+Overloading :
+Overridong :   
+
+Point no #11 will be discussed after exception handling.
+   
+Abstract : 
+=========
+1. "abstract" is a non-access modifier applciable for methods and classes.
+
+Abstract methods:
+=================
+Even though we dont' know anyhthing about the implementation still we can declare a method in Java with the help "abstract" modifier.
+
+Abstract class:
+================
+For a class if object creation is not possible(Because of partial implementtaion) that type of class is called Abstract class.
+
+Note #: Abstract class can have 0 number of abstract methods.
+
+Ex:
+abstract class Vehicle{
+	public abstract int getNoOfWheels();
+}
+class Auto extends Vehicle{
+	public  int getNoOfWheels(){
+        return 3;
+	}
+}
+class Bus extends Vehicle{
+	public  int getNoOfWheels(){
+        return 6;
+	}
+}
+class Test{
+	public static void main(String[] args){
+		Vehicle v=new Auto();
+		System.out.println(v.getNoOfWheels());
+
+		v=new Bus();
+        System.out.println(v.getNoOfWheels());
+
+
+	}
+}
+
+Combination of abstract modifier with other modifier:
+-----------------------------------------------------
+1. abstract and final are illegal combination at method level.
+==============================================================
+Q#1. Can abstract methods be final or vice versa?
+Ans. No abstract method can' be declared as final or vice versa.
+
+Case #1:
+
+abstract class P{
+	public abstract final void m1();
+}
+
+Test.java:27: error: illegal combination of modifiers: abstract and final
+        public abstract final void m1();
+                                   ^
+
+Case #2:
+
+abstract class P{
+	public abstract final void m1(){
+
+	}
+}
+E:\testworkspace>javac Test.java
+Test.java:27: error: illegal combination of modifiers: abstract and final
+        public abstract final void m1(){
+
+2. abstract and final are illegal combination at class level.
+=============================================================
+final abstract class P{
+	
+}
+
+E:\testworkspace>javac Test.java
+Test.java:26: error: illegal combination of modifiers: abstract and final
+final abstract class P{
+               ^
+
+2. abstract and static forms illegal combination.
+==================================================
+abstract class P{
+	public abstract static void m1(){
+
+	}
+}
+E:\testworkspace>javac Test.java
+Test.java:28: error: illegal combination of modifiers: abstract and static
+        public abstract static void m1(){
+                                    ^
+1 error
+
+3. abstract and private makes illegal combination
+===================================================
+
+abstract class P{
+	private abstract void m1(){
+
+	}
+}
+
+E:\testworkspace>javac Test.java
+Test.java:28: error: illegal combination of modifiers: abstract and private
+        private abstract void m1(){
+                              ^
+1 error
+
+Test Cases:
+-----------
+Q. What is the output of the following code?
+
+Test Case #1:
+==============
+class P{
+	public void m1();
+}
+
+E:\testworkspace>javac Test.java
+Test.java:28: error: missing method body, or declare abstract
+        public void m1();
+                    ^
+1 error
+
+Test Case #2:
+=============
+class P{
+	public abstract void m1();
+}
+
+
+E:\testworkspace>javac Test.java
+Test.java:27: error: P is not abstract and does not override abstract method m1() in P
+class P{
+^
+
+Test Case #3:
+==============
+abstract class P{
+	public abstract void m1(){
+
+	}
+}
+E:\testworkspace>javac Test.java
+Test.java:28: error: abstract methods cannot have a body
+        public abstract void m1(){
+                             ^
+1 error
+
+Test Case #4:
+==============
+abstract class P{
+	public abstract void m1();
+}
+
+Code will compile succesfully.
+
+Test Case #5:
+==============
+
+abstract class P{
+	public abstract void m1();
+    public abstract void m2();
+}
+class C extends P{
+	public void m1(){
+
+	}   
+}
+E:\testworkspace>javac Test.java
+Test.java:31: error: C is not abstract and does not override abstract method m2() in P
+class C extends P{
+^
+1 error
+
+Important point with respect to abstract modifier:
+===================================================
+In Java applications to access abstract class member we have to
+create object for sub-class and we have to create reference variable
+either for abstract class or for sub-class.
+
+If we create reference variable for abstract class then we are able to access only 
+abstract class members we are unable to access subclass own members.
+
+If we declare reference variable for sub-class then we are able to access both abstract 
+class members and subclass member.
+
+abstract class P{
+	public  void m1(){
+		System.out.println("m1() method");
+	}
+    public abstract void m2();
+    public abstract void m3();
+
+}
+
+class C extends P{
+	public  void m2(){
+		System.out.println("m1() method");
+	}
+	public  void m3(){
+		System.out.println("m1() method");
+	}
+	public  void m4(){
+		System.out.println("m1() method");
+	}
+}
+class Test{
+	public static void main(String[] args){
+		P p=new C();
+		p.m1();
+		p.m2();
+		p.m3();
+		//p.m4();
+			
+		C c=new C();
+		c.m1();
+		c.m2();
+		c.m3();
+		c.m4();
+
+	}
+}
+toString() method:
+===================
+Whenever we try to print object reference interbally toString() method is executed.
+toString() method is  present in Object class.
+Object class toString() method:
+==============================
+public String toString() {
+        return getClass().getName() + "@" + Integer.toHexString(hashCode());
+ }
+
+Note: We should override toString() method in our class.
+
+******
+Q#: Can abstract class have constructors ?Explain the answer.
+============================================================
+Ans. Abstract class can have constructor.
+
+Abstract class without constructor:
+===================================
+abstract class Person{
+	String name;
+	int age;
+}
+class Student extends Person{
+	int roll;
+	String course;
+	Student(String name, int age,int roll,String course){
+		this.name=name;
+		this.age=age;
+		this.roll=roll;
+		this.course=course;
+	}
+	public String toString() {
+        System.out.println(this.name+" "+this.age+" "+this.roll+" "+this.course);
+        return "";
+    }
+}
+class Faculty extends Person{
+	String dept;
+	double salary;
+	Faculty(String name, int age,String dept,double salary){
+		this.name=name;
+		this.age=age;
+		this.dept=dept;
+		this.salary=salary;
+	}
+	public String toString() {
+        System.out.println(this.name+" "+this.age+" "+this.dept+" "+this.salary);
+        return "";
+    }
+}
+class Test{
+	public static void main(String[] args){
+		Student s=new Student("AAA",21,111,"Btech");
+		System.out.println(s);
+
+		Faculty f=new Faculty("FFF",30,"ABC",10000);
+        System.out.println(f);
+
+	}
+}
+
+Drawback of the above code:
+1. Code Redundancy(Code duplication)
+2. Readability is getting down
+
+To overcome the above drawbacks we have abstract class with constructor.
+The advantage of abstract class constructor is to initialize the non-static variable which are inherited from parent class abstract class to child class.
+It will be executed at the time of child class object creation.
+
+Abstract class with constructor:
+===================================
+abstract class Person{
+	String name;
+	int age;
+	Person(String name, int age){
+		this.name=name;
+		this.age=age;
+	}
+}
+class Student extends Person{
+	int roll;
+	String course;
+	Student(String name, int age,int roll,String course){
+		/*this.name=name;
+		this.age=age;*/
+		super(name,age);
+		this.roll=roll;
+		this.course=course;
+	}
+	public String toString() {
+        System.out.println(this.name+" "+this.age+" "+this.roll+" "+this.course);
+        return "";
+    }
+}
+class Faculty extends Person{
+	String dept;
+	double salary;
+	Faculty(String name, int age,String dept,double salary){
+		/*this.name=name;
+		this.age=age;*/
+		super(name,age);
+		this.dept=dept;
+		this.salary=salary;
+	}
+	public String toString() {
+        System.out.println(this.name+" "+this.age+" "+this.dept+" "+this.salary);
+        return "";
+    }
+}
+class Test{
+	public static void main(String[] args){
+		Student s=new Student("AAA",21,111,"Btech");
+		System.out.println(s);
+
+		Faculty f=new Faculty("FFF",30,"ABC",10000);
+        System.out.println(f);
+
+	}
+}
+
+Q# Can final class have abstract methods?
+=========================================
+Ans. No, final class can't have abstract methos why because abstract method will have to be implemented in the next level child class whereas for final class child class creation is not allowed.
+
+final class Test{
+	public abstract void m1();
+}
+
+E:\testworkspace>javac Test.java
+Test.java:1: error: Test is not abstract and does not override abstract method m1() in Test
+final class Test{
+      ^
+1 error
+
+Q# Can abstract class have final methods?
+=========================================
+Ans.Abstract class cna have final methods.
+final methods means overridng is not possible but for abstract class we can have 0 number of abstract methods.Hence possible.
+
+abstract  class Test{
+	public final void m1(){
+
+	}
+}
+
+Q# Can we extends non-abstract class as abstract and vice-versa?
+=================================================================
+Ans. We can extends non-abstract class as abstract and vice-versa.
+
+class P{
+	public void m1(){
+		System.out.println("P class m1() method");
+	}	
+}
+abstract class C extends P{         /*Extending non-abstract class to abstract*/
+	public abstract void m2();
+}
+class C1 extends C{                /*Extending abstract class as non-abstract*/
+	public void m2(){
+		System.out.println("C1 class m2() method");
+	}
+	public void m3(){
+		System.out.println("C1 class m3() method");
+	}
+}
+class Test{
+	public static void main(String[] args){
+		P p=new P();
+		p.m1();
+		//p.m2();
+		//p.m3();
+
+		C c =new C1();
+		c.m1();
+		c.m2();
+		//c.m3();
+
+		C1 c1=new C1();
+		c1.m1();
+		c1.m2();
+		c1.m3();
+	}
+}
+
+Q#. Is multiple inheriatnce is allowed in Java or not ?
+========================================================
+Ans.Multiple inheritance in java is not allowed in class level but allowed in through interfaces.
+Multiple inheritance in java is not allowed because it creates ambigity problem which is also known as "Dimond Access Problem".
+
+class P{
+	public void m1(){
+		System.out.println("P class m1() method");
+	}
+}
+class P1{
+	public void m1(){
+		System.out.println("P1 class m1() method");
+	}
+}
+class C extends P,P1{
+		
+}
+
+
+E:\testworkspace>javac Test.java
+Test.java:12: error: '{' expected
+class C extends P,P1{
+                 ^
+1 error
+
+But we can overcome this with the knowledge of Interfaces.
+interface P{
+     void m1();
+}
+interface P1{
+     void m1();
+}
+
+interface C extends P,P1{
+  
+}
+class Test implements C{
+		public void m1(){
+
+			System.out.println("m1() method");
+		}
+		public  static void main(String[] args){
+			Test t=new Test();
+			t.m1();
+
+		}
+}
+
+Interface:
+----------
+Q> What is an interface ?
+
+Ans.
+1. It is Service Requirement Specification(SRS).
+
+2.From Client point of view interface defines the set of services that he is expecting.
+From Service provider point of view interface defines the set of services that they are offering.
+Hence we can say interface is a contract between cleint and serive provider.
+
+3. Inside interface all methods are by default public and abstract whether we decalre or not.
+Hence interfce is 100 % abstraction(100% pure abstract class).
+
+
+Sumamry Definition: An interface is Service requirement Specification or Contract between Client and Service Provider or is 100 % abstraction.
+
+Note: But this definition hold good only upto java 1.7 version.
+
+
+Declaration of interface:
+=========================
+1. We have to use "interface" keyword to decalre an interface.
+2. If we compile a java file having interface then also .class file will be created.
+3. Inside a java application we can have any number of interfaces.
+4. An interface by default an abstract entity.
+Hence
+interface Interf{
+
+}
+
+or
+abstract interface Interf{
+
+}
+are same.
+
+Implementation of Interface:
+===========================
+
+1. Once an interface is defined we can have any number of implementation classes for that.
+2. For implementation class we have to write "implements" keyword.
+3. General Syntax:
+
+interface Interf{
+
+}
+class Test implements Interf{
+
+
+}
+
+4. A class implement any number of interfaces and in that case those interfaces will be comma separated.
+
+5. Inside implementation class it is permissble to add implementation class specific methods also.
+
+interface Interf{
+	 void  m1();  // public
+} 
+class Test implements Interf{
+   public void m1(){  
+
+
+   }
+   void m2(){  // default
+
+
+   }
+}
+
+Accessing Implemtnation classes through Interface:
+===================================================
+1. Interface reference variable can be used to hold implemented class object.
+But by using that reference variable we can call only the interface specific method.
+We can'call implementation class specific methods.
+
+ interface Interf{
+	 void  m1(int param);  // public
+}
+class Client implements Interf{
+	 public void  m1(int param){
+		System.out.println("m1() method called with :"+param);
+	 }
+	 void nonIfaceMethod(){
+        System.out.println("Non-Iface method");
+	 }
+}
+class Test{
+	public static void main(String[] args){
+		Interf i = new Client();
+		i.m1(10);
+		i.nonIfaceMethod();
+
+
+	}
+}
+
+E:\testworkspace>javac Interf.java
+Interf.java:16: error: cannot find symbol
+                i.nonIfaceMethod();
+                 ^
+  symbol:   method nonIfaceMethod()
+  location: variable i of type Interf
+1 error
+
+
+2. Polymorphic power of interface:
+Iterface reference variable can be used to hold implemented class object.
+Here also method resolution is taken care by JVM based on run time object.
+
+ interface Interf{
+	 void  m1(int param);  // public
+}
+class Client implements Interf{
+	 public void  m1(int param){
+		System.out.println("m1() method called from Cleint with :"+param);
+	 }
+}
+
+class AnotherClient implements Interf{
+	 public void  m1(int param){
+		System.out.println("m1() method called from Another Client with :"+param);
+	 }
+}
+class Test{
+	public static void main(String[] args){
+ 		Interf i = new Client();
+		i.m1(10);
+
+		i=new AnotherClient();
+		i.m1(20);
+
+	}
+}
+
+Interface Can be Extended :
+============================
+-> An interface can extend another interface.
+
+interface P{
+	void m1();
+	void m2();
+}
+interface C extends P{
+	void m3();
+}
+class Sample implements C{
+    public void m1(){
+       System.out.println("m1() method");
+	}
+	public void m2(){
+       System.out.println("m2() method");
+	}
+	public void m3(){
+       System.out.println("m3() method");
+	}
+}
+class Test{
+	public static void main(String[] args){
+        Sample s=new Sample();
+		s.m1();s.m2();s.m3();
+
+		C c=new Sample();
+		c.m1();
+		c.m2();
+		c.m3();
+
+		P p =new Sample();
+		p.m1();
+		p.m2();
+		//p.m3();
+	}
+}
+
+Date: 18.11.2022
+==================
+"extends" Vs. "implements"
+===========================
+
+-> A class can extends only one class.
+
+class P{
+
+}
+class C extends P{
+
+
+}
+
+-> A class can implements any number of interfaces.
+interface Interf1{
+
+
+}
+interface Interf2{
+
+
+}
+class Test implements Interf1, Interf2{
+
+
+
+}
+Ex: Predefined String class.
+To check the profile of String class 
+> javap java.lang.String
+
+-> A class can extends a class and implements any number of interfaces simultaneously.
+
+interface Interf1{
+
+
+}
+interface Interf2{
+
+
+}
+class P{
+
+
+}
+class C extends P implements Interf1,Intref2{
+
+
+
+}
+
+-> An interface can extends any number of interfaces.
+
+interface Interf1{
+
+
+}
+interface Interf2{
+
+
+}
+
+interface Interf3 extends Interf1,Interf2{
+
+
+}
+
+Q# Why extends first but not implements first?
+
+interface Interf{
+    void m1();
+}
+class P{
+      public void m1(){
+         System.out.println("P class m1 method");
+	  }
+}
+/*class C extends P implements Interf{
+	public void m1(){
+         System.out.println("C class m1 method");
+	  }
+
+}*/
+class C implements Interf extends P {
+
+}
+
+E:\testworkspace>javac Interf.java
+Interf.java:15: error: '{' expected
+class C implements Interf extends P {
+                         ^
+1 error
+
+Interface Methods:
+==================
+-> Every ineterface method is by default "public" and "abstract".[Upto Java 7 only]
+
+public: To make the interface methods available to all imeplementation classes interface methods are public.
+
+abstract: Interface methods never talks about implementation that is why interfce methods are abstract.
+
+Inside interface all the following declarationsa re valid.
+
+void m1();
+public void m1();
+abstrac void m1();
+public abstract void m1();
+
+Interface Variables:
+====================
+-> Interface variables are defined for "Requirement Specification Constant".
+-> Every interafce variable are by default "public","static" and "final".
+
+public : To make it availabel to all the implementation classes.
+static : To access the variable without creating any object interface variable must be declared as static.
+final: If one implementation class change the variable the other implementation class may be affected.To prevent this every interface variable by default is final.
+
+Inside interface all the following variable declarations are valid.
+
+String s="Aot";
+public String s="Aot";
+static String s="Aot";
+final static String s="Aot";
+public static String s="Aot";
+static final String s="Aot";
+public final String s="Aot";
+public static final String s="Aot";
+
+Note: Every interafce variable must be initialized at the time of declarations.
+Otherwise we will get a Compile time error.
+
+interface Interf{
+    int x;
+}
+class C  implements Interf{
+	
+}
+E:\testworkspace>javac Interf.java
+Interf.java:2: error: = expected
+    int x;
+         ^
+1 error
+
+->Interface variable can be possible to access from  implementation classes but not possible 
+to reassignement.
+
+interface Interf{
+    int x=10;
+}
+class C  implements Interf{
+	public static void main(String[] args){
+        x=20;
+		System.out.println(x);
+	}
+}
+
+E:\testworkspace>javac Interf.java
+Interf.java:6: error: cannot assign a value to final variable x
+        x=20;
+        ^
+1 error
+
+
+interface Interf{
+    int x=10;
+}
+class C  implements Interf{
+	public static void main(String[] args){
+        int x=20;
+		  System.out.println(x);
+        System.out.println(Interf.x);
+
+	}
+}
+
+O.P : 20
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Poly  : Many
+Morph : Form
+
+To achive Polymorphism in Java : 
+1. Method Overloading
+2. Method Overriding
+3. Method Hiding
+4. Super class variable can be used to hold sub class object.
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                                            
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
