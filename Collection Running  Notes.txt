@@ -1,0 +1,875 @@
+Day #1: Date: 03.01.2023
+=========================
+Collection Framework:
+=====================
+int x=10;
+int y=20;
+int z=30;
+
+
+int []x=new int[100];
+Array: It is an indexed collection of fixed number of homogeneous elements.
+
+Advantage of Array:
+====================
+The main advatage of array is we can represent multiple values by using single variable,
+so readability of the code will be improved.
+
+Ex:int[] x =new int[10];
+
+Limiations of Array:
+====================
+1. Arrays are of fixed in size i.e. depending on requirement we can't increse or decrese the sze.
+Hence arrays are not recommended to use because it is not always possible to know the size of the array from the beginning.
+
+2. Array can hold homogeneous type of elements.
+
+Student[]s=new Student[120];
+s[0]=new Student();
+s[1]=new Student();
+s[2]=new Employee(); //CE
+
+
+Object[] obj=new Object[120];
+obj[0]=new Student();
+obj[1]=new Employee();
+obj[2]=new Customer();
+
+
+3. Arrays dont have any underlying data structure.For any requirement being a programmer we have to write the code exlicitly.We will not get any inbuilt method support.
+
+
+Collection Framework:
+=====================
+1. Collection is growable in nature.
+2. Collection can hold homogeneous and heterogeneous elements.
+3. For every collection interface implemented class we have underlying data structure and hence ready-made support is avialable.Being a programmer we are responsible to use those methods and we are not responsible to implement those methods.
+
+Q#1. What are the differences between Array and Colelction?
+
+Ans.
+
+1. Arrays are fixed in size.
+   Colelctions are growable in nature.
+
+2. With respect memory point of view Collection is recommended to use.
+   With respect memory point of view Array is not recommended to use.
+
+3. With respect to performance Array is recommended to use.
+   With respect to performance Colelction is  not recommended to use.
+
+4. Array can hold only homogeneous type of elements.
+   Collection can hold both homogeneous and heterogeneous type of elemnts.
+
+5. For array there is no underlying data structure is avialble.Hence for every requirement we have to write the code explicitly.
+For every collection class underlying data structire is available hence ready made method support is available.
+
+6. Array can hold both primitive and objects.
+Collection can hold only object types but not primitives.
+
+int[] i=new int[10];
+String[] s=new String[5];
+
+Collection(I):
+
+-> It is a predefined interface and present in java.uitl package.
+
+Q>When should we go for Collection ?
+
+Ans.
+If we want to represent a group of individual object as a single entity then we should go for Colelction concept.
+
+9 key interface of Collection Framework:
+----------------------------------------
+1. Collection
+2. List
+3. Set
+4. SortedSet
+5. NavigableSet
+6. Queue
+7. Map
+8. SortedMap
+9. NavigableMap
+
+
+1. Collection(I):
+-------------------
+=> If we want to represent a group of individual object as a single entity 
+then we should go for Collection concept.
+
+=> In general it is considered as the root interface of Collection Framework.
+
+=> It contains the most common methods which are applicable for any collection object [Collection interface implemented class object]
+
+=> It does not have any direct implementation class.
+
+
+Q#2. What is the difference between Collection and Collections.
+
+Ans.
+Collection is an interface.
+Collections is a class.
+
+If we want to represent a group of individual object as a single entity 
+then we should go for Collection concept.
+
+Collctions is an utily class present in java.util package whcih consists of several utility methods which are applicable for Collection interface implemented class object. 
+
+
+2. List (I):
+----------
+-> It is the child interface of Collection.
+-> If we want to represent a group of individual objects as a single entity where duplicates are allowed and insertion order is preserved, then we should go for List concpet.
+
+Ex:
+package com.wipro.test;
+import java.util.ArrayList;
+public class Test {
+
+	public static void main(String[] args) {
+		ArrayList<String>al=new ArrayList<>();
+		al.add("CSE3");
+		al.add("ECE3");
+		al.add("CSE3");
+		System.out.println(al);
+	}
+}
+
+Day #2: Date: 10.01.2023
+=========================
+3. Set :
+---------
+-> It is the child interface of Collection.
+-> If we want to represent a group of individual objects as a single entity where duplicates are not allowed and insertion order is not preserved, then we should go for Set concpet.
+
+package com.wipro.test;
+import java.util.HashSet;
+public class Test {
+	public static void main(String[] args) {
+
+		HashSet<String>hs=new HashSet<>();
+		hs.add("AAA");
+		hs.add("BBB");
+		hs.add("CCC");
+		System.out.println(hs);
+		
+       }
+}
+
+4.SortedSet(I):
+---------------
+-> It is a child interface of Set interface.
+->  If we want to represent a group of individual objects as a single entity where 
+duplicates are not allowed and and all objects should be inserted according to some sorting order then we should go for SortedSet interface.
+
+
+5.NavigableSet(I):
+------------------
+-> It is the child interface of SortedSet interface.
+-> It contains the methods for navigation purpose.
+
+6.Queue(I):
+---------
+-> It is child interface of Collection.
+-> If we want to represent a group of individual objects prior to processing  as a single entity then we should go for Queue.
+-> Usually queue follows First-In-First-Out.But based on our requirement we can implement our own priority order also.
+
+Example:Before sending a mail all maid id's we have to store in some data structure.In which order we added mail id's in the same order mail will be delivered.
+For this requirement Queue is the best choice.
+
+7.Map(I):
+----------
+-> It is not the child interface if collection.
+-> If we want to represent a group of individual objects as a key-value pair then we should go for Map Interace.
+-> Key is unique but value can be duplicated.
+-> Key and value must be objects.
+
+Strudent Roll No(Key)      Student Name(Value)
+-----------------          -------------------
+111                        AAA
+222                        BBB
+333                        CCC
+
+
+8.SortedMap(I):
+--------------
+-> It is the child interface of Map.
+-> If we want to represent a group of key-value pair according to some sorting order of keys then we should go for SortedMap.
+-> In SortedMap sorting should be based key but not based on value.
+
+
+9.NavigableMap(I):
+------------------
+-> It is the child interface of SortedMap.
+-> It contains the methods for navigation purpose.
+
+
+The important methods of Collection interface:
+---------------------------------------------
+1. boolean add(Object obj): 
+---------------------------
+->This method appends the specified element to the end of the Collection.
+-> If the specified element added succesfully then add(-) method will return "true" value.
+-> If the specified element is not added successfully then add(-)method will return "false" value.
+
+package com.wipro.test;
+
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
+public class Test {
+	public static void main(String[] args) {
+        List<String> al=new ArrayList<>();
+        al.add("AAA");
+        System.out.println(al.add("AAA"));
+        
+        Set<String>hs =new HashSet<>();
+        hs.add("AAA");
+        System.out.println(hs.add("AAA"));
+       }
+}
+
+
+2. boolean addAll(Collection c):
+--------------------------------
+-> This method can be used to add all the elements of the specified Collection to this Collection.
+->If addition opertaion is success then addAll(-) method will return "true" value.
+->If addition operaton is failure then addAll(-)method will return "false" value.
+
+package com.wipro.test;
+
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
+public class Test {
+	public static void main(String[] args) {
+        List<String> al=new ArrayList<>();
+        al.add("AAA");
+        al.add("BBB");
+        al.add("CCC");
+        
+        System.out.println("ArrayList :"+al);
+        
+        Set<String>hs =new HashSet<>();
+        hs.add("DDD");
+        hs.add("EEE");
+        hs.add("FFF");
+        System.out.println("HashSet:"+hs);
+         
+        al.addAll(hs);
+        
+        System.out.println("Final ArrayList:"+al);
+      }
+}
+
+In the above example specified collection is HashSet and this Collection is ArrayList.
+
+3. boolean remove(Object) : 
+---------------------------
+--> It is used to simply remove objects from Collection.
+--> If there are multiple such objects , the the first occurance of the object will be removed.
+-->If remove operation is success then remove() method will return true value.
+-->If remove operaton is failure then remove() method will return false value.
+
+package com.wipro.test;
+import java.util.ArrayList;
+import java.util.List;
+public class Test {
+	public static void main(String[] args) {
+      List<String> al=new ArrayList<>();
+        
+		al.add("AAA");al.add("BBB");al.add("CCC");al.add("DDD");
+
+		System.out.println("Before Removal :"+al);
+		System.out.println(al.remove("BBB"));
+
+		System.out.println("After Removal :"+al);
+		System.out.println(al.remove("XXX"));
+        
+      }
+}
+
+4. boolean removeAll(Collection c) : 
+------------------------------------
+--> The removeAll() method is used to remove from the list all of its elements that are contained in the specified collection.
+-->If remove operation is success then removeAll() method will return true value.
+-->If remove operaton is failure then removeAll() method will return false value.
+
+
+package com.wipro.test;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+public class Test {
+	public static void main(String[] args) {
+        List<String> al=new ArrayList<>();
+        al.add("AAA");
+        al.add("BBB");
+        al.add("CCC");
+        System.out.println("Before Removal :"+al);
+        
+        Set<String>hs=new HashSet<>();
+        hs.add("AAA");
+        hs.add("BBB");
+       
+        al.removeAll(hs);
+        System.out.println("After Removal :"+al);
+      }
+}
+
+In the above example specified collection is HashSet and this Collection is ArrayList.
+
+Absent List:
+============
+
+CSE#3:
+------
+130,133,136,137,140,141,142,147,148,150,151,156,159,160,164,167,168,171,172,173,174,
+176,181,183,184,186,187,188,189.
+L-199,204
+
+ECE #3:
+-------
+131,132,133,134,138,139,140,141,146,147,149,150,152,155,156,157,158,159,161,162,
+164,167,168,172,173,174,177,178,180,181,182
+
+L-205,207,
+ 
+
+Day #3: Date: 14.01.2023
+=========================
+
+5. boolean contains(Object obj)
+-------------------------------
+-->This method is used for checking if the specified element exists in the given ArrayList or not.
+-->If the specified element is existed then this method will return "true" value.
+-->If the specified element is not existed then this method will return "false" value.
+
+package com.wipro.test;
+
+import java.util.ArrayList;
+
+class Test{
+	public static void main(String[] args){
+
+		ArrayList<Integer> al=new ArrayList<>();
+		al.add(10);al.add(20);al.add(30);al.add(40);
+		
+		System.out.println(al.contains(30));
+		System.out.println(al.contains(50));
+			
+	}
+}
+
+6. booelan containsAll(Collection c)
+------------------------------------
+--> This method will check whether all the elements of the specified Colllection are avaialable or not.
+-->If all the specified element is existed then this method will return "true" value.
+-->If atleast one element is not existed then this method will return "false" value.
+
+package com.wipro.test;
+
+import java.util.ArrayList;
+
+class Test{
+	public static void main(String[] args){
+
+		ArrayList<String> al=new ArrayList<>();
+		al.add("AAA");al.add("BBB");al.add("CCC");al.add("DDD");al.add("EEE");al.add("FFF");
+		
+		ArrayList<String> all=new ArrayList<>();
+		all.add("BBB");all.add("CCC");all.add("DDD");
+		// ArrayList al contains all the elements of all
+		System.out.println(al.containsAll(all));
+		
+		all.add("XXX");
+		all.add("YYY");
+		System.out.println(al.containsAll(all));
+		
+	}
+}
+
+7. boolean retainAll(Collection c)
+----------------------------------
+--> This method remove all the elements from the present Collection object except the elements  which are existed in the specified Collection.
+--> If at least one element is removed then retainAll() method will return true value.
+--> If no element are removed then it will return false value.
+
+package com.wipro.test;
+
+import java.util.ArrayList;
+
+class Test{
+	public static void main(String[] args){
+
+		ArrayList<String> al=new ArrayList<>();
+		al.add("AAA");al.add("BBB");al.add("CCC");al.add("DDD");al.add("EEE");al.add("FFF");
+		
+		ArrayList<String> all=new ArrayList<>();
+		all.add("BBB");all.add("CCC");all.add("DDD");
+		
+		System.out.println(al);
+		System.out.println(al.retainAll(all));
+		System.out.println(al);
+		
+		//al : [BBB,CCC,DDD]  all: [BBB,CCC,DDD]
+		System.out.println(al.retainAll(all));
+		
+		
+	}
+}
+
+8. int size()
+-------------
+-> This method can be used return an integer value representing th eno of element existed in any Collection interface implemented class object.
+
+package com.wipro.test;
+import java.util.ArrayList;
+
+class Test{
+	public static void main(String[] args){
+
+		ArrayList<String> al=new ArrayList<>();
+		System.out.println("Size ?"+al.size());
+		
+		al.add("AAA");al.add("BBB");al.add("CCC");al.add("DDD");al.add("EEE");al.add("FFF");
+		System.out.println("Size ?"+al.size());
+				
+	}
+}
+
+9. boolean isEmpty():
+---------------------
+--> This method can be used to check whether Collection interface implemented class object is empty or not.
+If the Collection interface implemented class object is empty then isEmpty() method will return "true" value.
+If the Collection interface implemented class object is not empty then isEmpty() method will return "false" value.
+
+package com.wipro.test;
+
+import java.util.ArrayList;
+
+class Test{
+	public static void main(String[] args){
+
+		ArrayList<String> al=new ArrayList<>();
+		System.out.println("Is Empty ?"+al.isEmpty());
+		
+		al.add("AAA");al.add("BBB");al.add("CCC");al.add("DDD");al.add("EEE");al.add("FFF");
+		System.out.println("Is Empty ?"+al.isEmpty());
+				
+	}
+}
+
+10. void clear():
+------------------
+->This method can be used to remove all the elements from Collection interface implemented class object.
+
+package com.wipro.test;
+import java.util.ArrayList;
+
+class Test{
+	public static void main(String[] args){
+
+		ArrayList<String> al=new ArrayList<>();
+		al.add("AAA");al.add("BBB");al.add("CCC");al.add("DDD");al.add("EEE");al.add("FFF");
+
+		System.out.println("Size Before Clear:"+al.size());
+		al.clear();
+		System.out.println("Size After Clear:"+al.size());
+				
+	}
+}
+
+for-each loop(Enhanced for loop):
+---------------------------------
+1. It is introduced in Java 1.5 Version.
+2. It is applicable only for Arrays and Collection.
+3. It can move only if forward direction. 
+
+Ex:
+--
+package com.wipro.test;
+
+import java.util.ArrayList;
+
+class Test{
+	public static void main(String[] args){
+
+		ArrayList<String> al=new ArrayList<>();	
+		al.add("AAA");al.add("BBB");al.add("CCC");al.add("DDD");al.add("EEE");al.add("FFF");
+       System.out.println(al);	
+        
+       for(String str:al) // for each String str present in al
+        	System.out.print(str+" ");
+	}
+}
+
+11. Object[] toArray():
+-----------------------
+-> This method will return all the elements of the Collection interafce implemented class object in the form of Object[].
+
+package com.wipro.test;
+
+import java.util.ArrayList;
+
+class Test{
+	public static void main(String[] args){
+
+		ArrayList<String> al=new ArrayList<>();	
+		al.add("AAA");al.add("BBB");al.add("CCC");al.add("DDD");al.add("EEE");al.add("FFF");
+       System.out.println(al);	
+        
+       Object []obj =al.toArray();
+       for(Object o: obj)
+    	   System.out.println(o);
+   
+	}
+}
+
+Loose coupling: 
+---------------
+1. Super class reference variable can be used to hold sub class object.
+2. Abstract class reference variable can be used to hold child class object.
+3. Interface reference variable can be used to hold implemented class object.
+
+*****
+Int Q #1: What are the differences between String Vs. StringBuffer
+-----------------------------------------------------------------
+Ans.
+Creation :
+----------
+1. String can be created in two different ways.
+   Approach #1 : With using new keyword:  String s =new String("CSE#3ECE#3");
+   Approach #2 : Without using new keyword i.e. by using String literal String s="CSE#3ECE#3";
+
+   StringBuffer can be created only by uisng new keyword.
+   StringBuffer sb=new StringBuffer();
+
+
+Modification:
+-------------
+2. String object is immutable(non-modifiable/non editable)
+i.e once we create a string object and try to perform modification onString object we can't perform any modification.
+With the modification a new object will be created.
+
+package com.wipro.test;
+public class Test {
+	public static void main(String[] args) {
+	      String s=new String("CSE#3");
+	      System.out.println(s);
+	      s.concat("ECE#3");
+	      System.out.println(s);
+	      
+	}
+}
+
+O.P:CSE#3
+    CSE#3
+
+StringBuffer is mutable.
+package com.wipro.test;
+public class Test {
+	public static void main(String[] args) {
+
+			StringBuffer sb=new StringBuffer("CSE#3");
+			System.out.println(sb);
+			sb.append("ECE#3");
+			System.out.println(sb);
+			
+	}
+}
+O.P:
+CSE#3
+CSE#3ECE#3
+
+3. Memory
+---------
+String consumes more memory during concatenation.
+Stringbuffer consumes less memory during concatenantion.
+
+4. Performance
+--------------
+String is slower during concatenation.
+StringBuffer is faster during concatenation.
+
+equals() method
+5. Object class equals method is meant for reference comparison.
+Inside String class it is overridden for content comparison.
+It means if two objects are having same content then it returns true value.
+
+Inside StringBuffer class equals() method is not overridden,hence Object class equals() method will be excuted, which is meant for reference comparison.
+It means if two objects are having different reference though the content are same it will return false value.
+
+package com.wipro.test;
+class Test{
+	public static void main (String[] args){
+			String str1=new String("CSE#3ECE#3");
+			String str2=new String("CSE#3ECE#3");
+			System.out.println(str1.equals(str2));                                 // true
+			
+			StringBuffer sb1=new StringBuffer("CSE#3ECE#3");
+			StringBuffer sb2=new StringBuffer("CSE#3ECE#3");
+			System.out.println(sb1.equals(sb2));                                //false
+			
+	}
+}
+
+Day #4: Date: 17.01.2023
+=========================
+
+List Interface:
+---------------
+-> It is the child interface of Collection.
+-> If we want to represent a group of individual objects as a single entity where duplicates are allowed and insertion order is preserved, then we should go for List concpet.
+-> In case of List interafce  index plays a very important role.
+
+List Interface Methods:
+------------------------
+1.void add(int index, Object obj)
+2.boolean addAll(int index, Collection c)
+3.Object remove(int index)
+4.Object get(index)
+5.Object set(int index, Object obj)
+6.int indexOf(Object obj)
+7.int lastIndexOf(Object obj)
+
+
+1.void add(int index, Object obj):
+--------------------------------
+->This method inserts the specified element at the specified position.
+->It shifts the element currently at that position(if any) and any subsequent elements to the right.(will add one to their indices).	
+package com.wipro.test;
+
+import java.util.ArrayList;
+import java.util.List;
+
+
+class Test{
+	public static void main (String[] args){
+			List<Integer>list=new ArrayList<>();
+			list.add(10);
+			list.add(20);
+			list.add(30);
+			list.add(40);
+			                                                              //   0     1  2    3
+			System.out.println("ArrayList :"+list);   //   10  20  30  40
+			list.add(2, 35);
+			System.out.println("ArrrayList:"+list);   // 10  20   35   30   40
+			
+	}
+}
+
+2. boolean addAll(int index, Collection c)
+------------------------------------------
+-->This method inserts all the elements of the specified collection to the present Collection  at the specified starting index.It shifts the element currently at that position and any subsequent element to the right.
+
+package com.wipro.test;
+
+import java.util.ArrayList;
+import java.util.List;
+
+
+class Test{
+	public static void main (String[] args){
+			List<Integer>list1=new ArrayList<>();
+			list1.add(10);
+			list1.add(20);
+			list1.add(30);
+			list1.add(40);
+			                                                              //   0     1  2    3
+			System.out.println("First ArrayList :");   //   10  20  30  40
+			for(Integer I: list1)
+				System.out.println(I);
+			
+			List<Integer>list2=new ArrayList<>();
+			list2.add(100);
+			list2.add(200);
+			list2.add(300);
+			list2.add(400);
+			                                                           
+			System.out.println("Second ArrayList :");   
+			for(Integer I: list2)
+				System.out.println(I);
+			
+			list1.addAll(2, list2);    // [10,20, 100,200,300,400,30,40]
+			
+			System.out.println("First ArrayList :");   //   10  20  30  40
+			for(Integer I: list1)
+				System.out.println(I);			
+			
+	}
+}
+
+3. Object remove(int index)
+---------------------------
+->It removes the element presennt at the specific index.
+-->After removing the element all the elements are moved to left to fill the space i.e the indices of the objects are updated.
+
+package com.wipro.test;
+
+import java.util.ArrayList;
+import java.util.List;
+
+
+class Test{
+	public static void main (String[] args){
+			
+		List<String> list=new ArrayList<>();
+		list.add("AAA");
+		list.add("BBB");
+		list.add("CCC");
+		list.add("DDD");
+		
+		System.out.println("Before Removal:"+list);
+		list.remove(2);
+		System.out.println("After Removal:"+list);
+	}
+}
+
+
+4. Object get(index):
+---------------------
+-> This method will return an element at the specified index value.
+
+package com.wipro.test;
+
+import java.util.ArrayList;
+import java.util.List;
+
+class Test{
+	public static void main (String[] args){
+			
+		List<String> list=new ArrayList<>();
+		list.add("AAA");
+		list.add("BBB");
+		list.add("CCC");
+		list.add("DDD");
+		
+		System.out.println(list);
+		System.out.println(list.get(2));
+		System.out.println(list);
+	
+	}
+}
+
+5. Object set(int index, Object obj)
+------------------------------------
+--> This method is used to replace/set the element at the specified index in the Collection with the specified element.
+
+package com.wipro.test;
+
+import java.util.ArrayList;
+import java.util.List;
+
+
+class Test{
+	public static void main (String[] args){
+			
+		List<String> list=new ArrayList<>();
+		list.add("AAA");
+		list.add("BBB");
+		list.add("CCC");
+		list.add("DDD");
+		
+		System.out.println(list);
+		System.out.println(list.set(2, "EEE"));
+		System.out.println(list);
+	
+	}
+}
+
+6. int indexOf(Object obj)
+--------------------------
+--> This method will return index value of the first occuarance of the specified element.
+
+package com.wipro.test;
+
+import java.util.ArrayList;
+import java.util.List;
+
+class Test{
+	public static void main (String[] args){
+			
+		List<String> list=new ArrayList<>();
+		list.add("AAA");
+		list.add("BBB");
+		list.add("AAA");
+		list.add("AAA");
+		
+		System.out.println(list.indexOf("AAA"));
+	
+	}
+}
+
+7. int lastIndexOf(Object obj)
+-------------------------------
+-> This method will return index value  of the last occurance of the specified element.
+
+package com.wipro.test;
+
+import java.util.ArrayList;
+import java.util.List;
+
+class Test{
+	public static void main (String[] args){
+			
+		List<String> list=new ArrayList<>();
+		list.add("AAA");
+		list.add("BBB");
+		list.add("AAA");
+		list.add("AAA");
+		
+		System.out.println(list.lastIndexOf("AAA"));
+
+	}
+}
+
+*****
+Singleton class  
+---------------
+
+*****
+Factory methods:
+---------------
+
+Object Type Casting:
+--------------------
+
+Syntax:
+
+A   b =(C) d;
+
+A : Class Name or Interface Name
+b : Name of reference variable.
+C : Class Name or Interface Name
+d : Name of the object
+
+Rule #1(Compiler):
+
+Rule #2(Compiler):
+
+Rule #3(JVM):
+
+Generics:
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+11. 
