@@ -55,6 +55,8 @@ class llReverseIterative{
         System.out.println("NULL");
     }
     public void reverseIterative(){
+        if(head==null || head.next==null)
+            return;
         Node prev=head,curr=head.next;
         while(curr!=null)
         {
