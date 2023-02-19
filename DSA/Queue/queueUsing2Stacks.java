@@ -34,7 +34,6 @@ public class queueUsing2Stacks {
     }
     public static void main(String[] args){
         Queue q=new Queue();
-        //Queue<Integer> q=new ArrayDeque<>(); //Queue is an interface, so it , LinkedList & ArrayDeque both implements Queue interface
         q.add(10);
         q.add(30);
         q.add(4);
