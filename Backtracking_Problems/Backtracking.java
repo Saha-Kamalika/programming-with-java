@@ -15,6 +15,8 @@ public class Backtracking {
     }
     public static void main(String args[])
     {
+        printf("The possible combinations of the string is: \n");
         permutation("ABC","",0); //A is taken fixed at first
     }
 }
+//Time complexity: O(n*n!)
