@@ -42,5 +42,5 @@ public class adjacencyListGraph1 {
      /*
         0   3
          \ / \
-          2   1
+          2   1     //undirected unweighted graph
       */
