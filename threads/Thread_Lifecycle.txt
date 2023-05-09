@@ -2,7 +2,7 @@ New->Runnable->Running->Terminated
        \          ./.
         \         /
         .\.      /
-          Runnable
+        Non-Runnable
 New-> Instance of thread created which is not yet started by invoking start().
 Runnable-> After invovation of start() & before it is selected to be run by the scheduler.
 Running-> After thread scheduler has selected it.
