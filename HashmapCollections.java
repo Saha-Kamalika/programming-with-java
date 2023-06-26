@@ -8,7 +8,6 @@ public class HashmapCollections {
         HashMap<String,Integer> hm=new HashMap<>();
         //Name, Net Worth(in dollars)
         hm.put("Kamalika",100);
-        hm.put("Akashdeep",110);
         hm.put("Srijit",140);
         hm.put("Jividha",100);
         hm.put("Kamalika",90);
