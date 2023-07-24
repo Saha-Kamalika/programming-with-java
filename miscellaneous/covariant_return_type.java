@@ -3,7 +3,7 @@ class a1{
     a1 func(){
         return this;
     }
-    void print(){
+    void print() {
         System.out.println("This is class a1 method");
     }
 }
