@@ -6,7 +6,7 @@ interface SmartPhone {
 
 class Oppo implements SmartPhone {
   public void use() {
-    System.out.println("Switching on Oppo Device..");
+    System.out.println("Switching on Oppo Device.. ");
   }
 }
 
