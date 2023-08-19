@@ -1,5 +1,5 @@
 public class Test{
-    public static void main(String[] args){
+    public static void main(String[] args) {
         String s="kama";
         System.out.println(s.hashCode());
         s=s+"lika";
