@@ -11,7 +11,7 @@ public class BufferedInput {
 			System.out.print((char)c);
 		}
 		String s;
-		while((s=b.readLine())!=null) {
+		while((s=b.readLine())!=null)  {
 			System.out.print(s);
 		}
 		b.close();
