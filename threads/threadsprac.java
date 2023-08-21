@@ -1,4 +1,4 @@
-class MyThread1 extends Thread{
+class MyThread1 extends Thread {
     int i;
     public void run() {
         while (i < 20000) {
