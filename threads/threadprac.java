@@ -1,5 +1,5 @@
 package classFiles;
-class Thread1 extends Thread{
+class Thread1 extends Thread {
     public void run() {
         /*while (true) {
             System.out.println("Good Morning");
