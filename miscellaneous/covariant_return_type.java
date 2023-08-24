@@ -13,7 +13,7 @@ class a2 extends a1{
         return this;
     }
     @Override
-    void print(){
+    void print() {
         System.out.println("This is class a2 method");
     }
 }
