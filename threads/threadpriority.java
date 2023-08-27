@@ -10,7 +10,7 @@ class MyThreadd1 extends Thread{
         }
     }
 }
-public class threadpriority {
+public class threadpriority  {
     public static void main(String[] args) {
         MyThreadd1 t1 = new MyThreadd1("Kamalika");
         MyThreadd1 t2 = new MyThreadd1("Rumi");
