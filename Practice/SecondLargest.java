@@ -12,3 +12,16 @@ public class SecondLargest {
 		System.out.println(list.get(list.size()-2));
 	}
 }
+/*
+class Solution {
+    int print2largest(int arr[], int n) {
+        TreeSet<Integer> set=new TreeSet<>();
+        for(int el: arr) set.add(el);
+        Integer num[]=new Integer[set.size()];
+        num=set.toArray(num);
+        int size=num.length;
+        if(size==1) return -1;
+        else return num[size-2];
+    }
+}
+*/
