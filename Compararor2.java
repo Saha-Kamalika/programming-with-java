@@ -3,7 +3,7 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.Collections;
 public class Comparator2{
-  public static void main(String[] args){
+  public static void main(String[] args) {
     List<Employee> emp=new ArrayList<>();
     emp.add(new Employee(1,33));
     emp.add(new Employee(2,50));
