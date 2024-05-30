@@ -10,7 +10,7 @@ public class ComparatorInterface{
     list.add(132);
     list.add(163);
     //sorting the numbers based on last 2 digits 
-    Comparator<Integer> com=new Comparator<>(){
+    Comparator<Integer> com=new Comparator<Integer>(){
       public int compare(Integer o1,Integer o2){
         if(o1%100>o2%100) return 1;
         return -1;
